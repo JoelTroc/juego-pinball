@@ -1,0 +1,44 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
+}
+
+#gameArea {
+    width: 500px;
+    height: 600px;
+    background-color: #87CEEB; /* Azul cielo */
+    position: relative;
+    margin: 50px auto;
+    overflow: hidden;
+    border: 2px solid #2E8B57; /* Verde oscuro */
+    border-radius: 10px;
+}
+
+#player {
+    width: 100px;
+    height: 20px;
+    background-color: #2E8B57; /* Verde oscuro */
+    position: absolute;
+    bottom: 0;
+    left: 200px;
+    border-radius: 10px;
+}
+
+#ball {
+    width: 20px;
+    height: 20px;
+    background-color: red;
+    position: absolute;
+    top: 0;
+    left: 0; /* La posición inicial se asigna con JavaScript */
+    border-radius: 50%;
+}
+
+#score {
+    text-align: center;
+    font-size: 24px;
+    font-family: Arial, sans-serif;
+    color: #333;
+    margin-top: 10px;
+}
