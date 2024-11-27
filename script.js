@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', function () {
     let score = 0;
+    let highScore = 0;
     const player = document.getElementById('player');
     const ball = document.getElementById('ball');
     const scoreDisplay = document.getElementById('score');
@@ -7,6 +8,12 @@ document.addEventListener('DOMContentLoaded', function () {
     let playerPosition = 200; // Posición inicial del jugador
     let ballPosition = { x: Math.random() * (500 - 20), y: 0 }; // Posición inicial de la pelota
     let ballSpeed = { x: 2, y: 5 }; // Velocidad inicial de la pelota
+
+    // Cargar el puntaje más alto desde localStorage
+    if (localStorage.getItem('highScore')) {
+        highScore = parseInt(localStorage.getItem('highScore'));
+    }
+    updateScoreDisplay();
 
     // Detectar movimiento táctil
     let touchStartX = 0;
@@ -65,7 +72,7 @@ document.addEventListener('DOMContentLoaded', function () {
         ) {
             ballSpeed.y = -Math.abs(ballSpeed.y); // Asegurar rebote hacia arriba
             score++; // Incrementar puntaje
-            scoreDisplay.textContent = 'Puntaje: ' + score;
+            updateScoreDisplay();
         }
 
         // Si la pelota cae fuera del área, reiniciar
@@ -81,12 +88,26 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Función para reiniciar la pelota y los puntos
     function resetBall() {
+        // Actualizar el puntaje más alto si corresponde
+        if (score > highScore) {
+            highScore = score;
+            localStorage.setItem('highScore', highScore); // Guardar en localStorage
+        }
+
+        // Reiniciar el puntaje
+        score = 0;
+        updateScoreDisplay();
+
+        // Reiniciar la posición y velocidad de la pelota
         ballPosition = { x: Math.random() * (500 - 20), y: 0 };
         ballSpeed = { x: 2, y: 5 }; // Velocidad inicial
         ball.style.left = ballPosition.x + 'px';
         ball.style.top = ballPosition.y + 'px';
-        score = 0; // Reiniciar puntaje
-        scoreDisplay.textContent = 'Puntaje: ' + score;
+    }
+
+    // Función para actualizar la visualización del puntaje
+    function updateScoreDisplay() {
+        scoreDisplay.textContent = `Puntaje: ${score} | Puntaje más alto: ${highScore}`;
     }
 
     // Mover la pelota cada 20ms
