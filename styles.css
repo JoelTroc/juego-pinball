@@ -2,55 +2,109 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: black;
-  margin: 0;
+  justify-content: center;
+  background: radial-gradient(circle, #1e3c72 0%, #2a5298 100%);
   color: white;
+  margin: 0;
+  font-family: 'Arial', sans-serif;
+  height: 100vh;
+  padding: 10px;
+  box-sizing: border-box;
 }
 
 canvas {
   border: 2px solid #fff;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
   margin-bottom: 20px;
+  width: 90%;
+  max-width: 600px;
+  height: auto;
+  aspect-ratio: 4 / 3;
 }
 
 form {
   display: flex;
+  flex-direction: column;
+  align-items: center;
   gap: 10px;
   margin-top: 20px;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+  width: 90%;
+  max-width: 300px;
+  box-sizing: border-box;
 }
 
 input {
-  padding: 5px;
+  padding: 8px;
   border-radius: 5px;
   border: 1px solid #0095DD;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.2);
+  color: white;
+  box-sizing: border-box;
 }
 
 button {
-  padding: 5px 10px;
+  padding: 8px 20px;
   border-radius: 5px;
   border: none;
   background-color: #0095DD;
   color: white;
   cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 button:hover {
   background-color: #0077b3;
+  transform: scale(1.05);
 }
 
 #scoreboard {
   margin-top: 20px;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+  width: 90%;
+  max-width: 300px;
+  box-sizing: border-box;
 }
 
 #scoreboard h2 {
   margin: 0;
-  padding: 0;
+  padding: 10px;
+  font-size: 24px; /* Aumenta el tamaño de la fuente del título */
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
 }
 
 #playersList {
   list-style-type: none;
   padding: 0;
+  max-height: 150px;
+  overflow-y: auto;
+  box-sizing: border-box;
 }
 
 #playersList li {
   margin: 5px 0;
+  padding: 10px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 5px;
+  font-size: 18px; /* Aumenta el tamaño de la fuente de los elementos de la lista */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  transition: background 0.3s, transform 0.3s;
 }
+
+#playersList li:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: scale(1.05);
+}
+

@@ -10,12 +10,14 @@ function initializeGameVariables() {
     y: canvas.height - 30,
     dx: 3, // Velocidad inicial de la pelota
     dy: -3, // Velocidad inicial de la pelota
-    radius: 10
+    radius: 10,
+    color: '#FF4500'
   };
   paddle = {
     height: 10,
     width: 75, // Ancho inicial del paddle
-    x: (canvas.width - 75) / 2
+    x: (canvas.width - 75) / 2,
+    color: '#1E90FF'
   };
   rightPressed = false;
   leftPressed = false;
@@ -34,7 +36,7 @@ function initializeGameVariables() {
   for (let c = 0; c < columnCount; c++) {
     bricks[c] = [];
     for (let r = 0; r < rowCount; r++) {
-      bricks[c][r] = { x: 0, y: 0, status: 1 };
+      bricks[c][r] = { x: 0, y: 0, status: 1, color: getRandomColor() };
     }
   }
 }
@@ -111,7 +113,7 @@ function increaseDifficulty() {
 function drawBall() {
   ctx.beginPath();
   ctx.arc(ball.x, ball.y, ball.radius, 0, Math.PI * 2);
-  ctx.fillStyle = '#0095DD';
+  ctx.fillStyle = ball.color;
   ctx.fill();
   ctx.closePath();
 }
@@ -119,7 +121,7 @@ function drawBall() {
 function drawPaddle() {
   ctx.beginPath();
   ctx.rect(paddle.x, canvas.height - paddle.height, paddle.width, paddle.height);
-  ctx.fillStyle = '#0095DD';
+  ctx.fillStyle = paddle.color;
   ctx.fill();
   ctx.closePath();
 }
@@ -134,7 +136,7 @@ function drawBricks() {
         bricks[c][r].y = brickY;
         ctx.beginPath();
         ctx.rect(brickX, brickY, brickWidth, brickHeight);
-        ctx.fillStyle = '#0095DD';
+        ctx.fillStyle = bricks[c][r].color;
         ctx.fill();
         ctx.closePath();
       }
@@ -221,5 +223,13 @@ function updatePlayersList(players) {
   });
 }
 
-initializeGameVariables(); // Asegúrate de inicializar variables antes de empezar
+function getRandomColor() {
+  const letters = '0123456789ABCDEF';
+  let color = '#';
+  for (let i = 0; i < 6; i++) {
+    color += letters[Math.floor(Math.random() * 16)];
+  }
+  return color;
+}
 
+initializeGameVariables(); // Asegúrate de inicializar variables antes de empezar
