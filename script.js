@@ -222,3 +222,4 @@ function updatePlayersList(players) {
 }
 
 initializeGameVariables(); // Asegúrate de inicializar variables antes de empezar
+

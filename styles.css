@@ -36,3 +36,21 @@ button {
 button:hover {
   background-color: #0077b3;
 }
+
+#scoreboard {
+  margin-top: 20px;
+}
+
+#scoreboard h2 {
+  margin: 0;
+  padding: 0;
+}
+
+#playersList {
+  list-style-type: none;
+  padding: 0;
+}
+
+#playersList li {
+  margin: 5px 0;
+}
